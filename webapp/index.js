@@ -14,8 +14,6 @@ sap.ui.require([
         sap.ui.getCore().setModel(oModel);
         //this.getView().setModel(oModel);
 
-
-
         //create a text UI element that displays a hardcoded text string
         new Text({
             text: "{/greetingText}"
