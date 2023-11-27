@@ -1,12 +1,29 @@
 {
-  "name": "sap-ui5-data-binding",
-  "version": "1.0.0",
+  "name": "sap.ui.demo.wt",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "webapp/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#app-tile\"",
+    "start-noflp": "fiori run --open \"index.html?sap-ui-xx-viewCache=false\"",
+    "start-variants-management": "fiori run --open \"preview.html?sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\"",
+    "build": "ui5 build -a --clean-dest --include-task=generateCachebusterInfo",
+    "deploy": "fiori verify",
+    "deploy-config": "fiori add deploy-config"
   },
-  "keywords": [],
+  "keywords": [
+    "ui5",
+    "openui5",
+    "sapui5"
+  ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "private": true,
+  "sapuxLayer": "CUSTOMER_BASE",
+  "devDependencies": {
+    "@ui5/cli": "^3.0.0",
+    "@sap/ux-ui5-tooling": "1",
+    "rimraf": "3.0.2"
+  }
 }

@@ -1,7 +1,29 @@
-specVersion: '3.1'
+specVersion: "3.1"
 metadata:
-  name: sap-ui5-data-binding
+  name: sap.ui.demo.wt
 type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: sap.ui.demo.wt
+        ui5Theme: sap_fiori_3
 framework:
   name: SAPUI5
   version: "1.120.1"

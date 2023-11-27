@@ -1,23 +1,26 @@
 sap.ui.require([
     "sap/m/Text",
-    "sap/ui/model/json/JSONModel"
-], function(Text, JSONModel) {
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/core/mvc/XMLView"
+], function (Text, JSONModel, XMLView) {
     "use strict"
 
-//  this.getView().getModel()
-    sap.ui.getCore().attachInit(function (){
-        //create a JSON Model from a  object literal
+    // Attach an anonymous function to the SAPUI5 'init' event
+    sap.ui.getCore().attachInit(function () {
+        // Create a JSON model from an object literal
         var oModel = new JSONModel({
-            greetingText : "Hi, my name is ... John Salt Lake"
-        })
-        //Assign the model object to the SAPUI5 core
-        sap.ui.getCore().setModel(oModel);
-        //this.getView().setModel(oModel);
+            firstName: "Harry",
+            lastName: "Styles",
+            enabled: true,
+            panelHeaderText: "Data Binding Basics"
+        });
 
-        //create a text UI element that displays a hardcoded text string
-        new Text({
-            text: "{/greetingText}"
-        }).placeAt("content") // html body call
-    }) 
-    
+        // Assign the model object to the SAPUI5 core
+        sap.ui.getCore().setModel(oModel);
+        
+        // Display the XML view called "App"
+        new XMLView({
+            viewName: "sap.ui.demo.db.view.App"
+        }).placeAt("content");
+    })
 })
